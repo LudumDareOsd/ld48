@@ -4,7 +4,7 @@ using System.Collections;
 public class PaeganBall : MonoBehaviour, IEnemy {
 
 	public int Health { get; set; }
-
+	public AudioClip hitSound;
 	private float ySpeed = 1f;
 	private float spinSpeed = 0.03f;
 	private float xTransitionTime = 3.5f;
@@ -37,6 +37,8 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	public void TakeDamage(int damage)
 	{
+		AudioManager.Instance.PlaySingle(hitSound, 0.3f);
+
 		Health -= damage;
 		if (Health <= 0)
 		{

@@ -575,7 +575,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: -0.8}
+  m_Offset: {x: 0.8, y: -1.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -586,7 +586,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.2}
+  m_Size: {x: 1.5, y: 1.4}
   m_EdgeRadius: 0
 --- !u!50 &639622676
 Rigidbody2D:
@@ -1191,6 +1191,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 10
+--- !u!1 &825299579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825299581}
+  - component: {fileID: 825299580}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &825299580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825299579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21f5bfb16bf1f741a97723c96091817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &825299581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825299579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5932741, y: 0.13170801, z: -6.9583387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891384699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,6 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab84fab3da35c43a5cd4f51658a697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordSwing: {fileID: 8300000, guid: 6f8e96d9cd1f74e42b683d5b10572678, type: 3}
   srPlayer: {fileID: 1536010023}
   left: {fileID: 21300000, guid: c0b553be039b74540aa28b4a85f498dc, type: 3}
   leftAttack: {fileID: 21300000, guid: 4bcfcd0a2b155ee49b9212225c31f399, type: 3}

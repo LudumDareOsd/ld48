@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 4.5
+  hitSound: {fileID: 8300000, guid: d1d61381cbff2a64f85d04b2e048023b, type: 3}
 --- !u!212 &5566428933891033321
 SpriteRenderer:
   m_ObjectHideFlags: 0
