@@ -11,10 +11,8 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	private void Start()
 	{
-		Health = 10;
 		ySpeed = Random.Range(0.6f, 1.2f);
 		spinSpeed = Random.Range(-0.04f, 0.04f);
-		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 	}
 
 	private void Update()
@@ -32,7 +30,9 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	public void Spawn(Vector3 pos)
 	{
+		Health = 10;
 		transform.position = pos;
+		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 	}
 
 	public void TakeDamage(int damage)
@@ -43,6 +43,11 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 			// Do the death things
 			Destroy(gameObject);
 		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		TakeDamage(5);
 	}
 
 	IEnumerator LerpXPosition(float targetXPosition, float duration)
