@@ -6,8 +6,8 @@ public class Parallax : MonoBehaviour
 {
 	private float height;
 	private float startPos;
+	private Vector3 pos = Vector3.zero;
 
-	public Vector3 pos = Vector3.zero;
 	public float parallaxEffect;
 
     void Start()
@@ -18,15 +18,13 @@ public class Parallax : MonoBehaviour
 
     void FixedUpdate()
     {
-		pos -= new Vector3(0, 0.1f, 0);
+		pos -= new Vector3(0, -0.01f * parallaxEffect, 0);
+		transform.position = pos;
 
-		var lastPos = pos.y * (1 - parallaxEffect);
-		var dist = pos.y * parallaxEffect;
-		transform.position = new Vector3(transform.position.x, startPos + dist, transform.position.z);
-
-		if (lastPos > startPos + height) {
-			startPos = 0f;
-			pos = Vector3.zero;
-		} 
+		if (transform.position.y > startPos + height) {
+			var delta = transform.position.y - (startPos + height);
+			Debug.Log(delta);
+			pos = new Vector3(0, startPos + delta, 0);
+		}
     }
 }
