@@ -1366,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordSwing: {fileID: 8300000, guid: 6f8e96d9cd1f74e42b683d5b10572678, type: 3}
+  death: {fileID: 8300000, guid: dbe77443d4b77e84f8cb32eb4b5f88c8, type: 3}
   srPlayer: {fileID: 1536010023}
   left: {fileID: 21300000, guid: c0b553be039b74540aa28b4a85f498dc, type: 3}
   leftAttack: {fileID: 21300000, guid: 4bcfcd0a2b155ee49b9212225c31f399, type: 3}
@@ -1428,7 +1429,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.8}
+  m_Size: {x: 0.6, y: 1.8}
   m_EdgeRadius: 0
 --- !u!1 &1019906168
 GameObject:

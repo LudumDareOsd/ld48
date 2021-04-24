@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	private float blinkTimer = 0f;
 
 	public AudioClip swordSwing;
+	public AudioClip death;
 
 	public SpriteRenderer srPlayer;
 	public Sprite left;
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour {
 
 				if (health <= 0) {
 					LevelManager.Instance.Lost();
+					AudioManager.Instance.PlaySingle(death, 0.1f);
 					Destroy(this);
 				}
 			}

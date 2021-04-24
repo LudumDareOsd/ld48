@@ -23,6 +23,7 @@ public class LevelManager : Singleton<LevelManager>
 	public List<Level> levels;
 	private Level currentLevel = null;
 	private bool lost = false;
+	private float lostTimeOut = 1f;
 
 	public void Awake() {
 		StartCoroutine(LoadLevel(0));
@@ -30,7 +31,9 @@ public class LevelManager : Singleton<LevelManager>
 
 	public void Update() {
 		if (lost) {
-			if (Input.anyKey) {
+			if (lostTimeOut >= 0f) {
+				lostTimeOut -= Time.deltaTime;
+			} else if (Input.anyKey) {
 				SceneManager.LoadScene("main");
 			}
 			return;
@@ -38,12 +41,11 @@ public class LevelManager : Singleton<LevelManager>
 
 		currentLevel.Tick();
 		TextManager.Instance.AddScore(1);
-
-		
 	}
 
 	public void Lost() {
 		lost = true;
+		lostTimeOut = 1f;
 		TextManager.Instance.ShowLostText();
 	}
 
