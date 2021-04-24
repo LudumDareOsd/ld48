@@ -5,6 +5,6 @@ public interface IEnemy {
 
 	int Health { get; set; }
 
-	void Spawn(Vector3 pos);
+	void Spawn();
 	void TakeDamage(int damage);
 }

@@ -17,7 +17,6 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	private void Update()
 	{
-		//float step = xSpeed * Time.deltaTime; // calculate distance to move
 		var step = ySpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 6.5f, 0), step);
 		var spinStep = spinSpeed * Time.deltaTime;
@@ -28,16 +27,16 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		}
 	}
 
-	public void Spawn(Vector3 pos)
+	public void Spawn()
 	{
 		Health = 10;
-		transform.position = pos;
+		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 	}
 
 	public void TakeDamage(int damage)
 	{
-		Health = -damage;
+		Health -= damage;
 		if (Health <= 0)
 		{
 			// Do the death things

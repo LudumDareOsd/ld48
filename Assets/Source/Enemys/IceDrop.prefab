@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9187149547400611757}
-  - component: {fileID: 8432490040744722209}
-  - component: {fileID: -7937969826091513369}
+  - component: {fileID: 4577905010898745651}
+  - component: {fileID: 6078381130501706377}
   - component: {fileID: 5566428933891033321}
-  - component: {fileID: 5999634873159427558}
+  - component: {fileID: 3735716020534292082}
   m_Layer: 0
-  m_Name: LostSoul
+  m_Name: IceDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8432490040744722209
+--- !u!114 &4577905010898745651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7298991456915058498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be70b19fc9be7914c9af329bf6551d76, type: 3}
+  m_Script: {fileID: 11500000, guid: 70d967314b3c22c449120730942eb4cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 4.5
---- !u!114 &-7937969826091513369
+--- !u!114 &6078381130501706377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,9 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 053f9bb1689989641b370acd53f4563c, type: 3}
-  - {fileID: 21300000, guid: 18809ab6b49a29742bbbf33ef5d4767d, type: 3}
-  switchTime: 1.33
+  - {fileID: 21300000, guid: ff41f7df065e4514c9cacaece2113db2, type: 3}
+  - {fileID: 21300000, guid: 8f24f9d04756c5146bcb290437a660c5, type: 3}
+  switchTime: 0.61
 --- !u!212 &5566428933891033321
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: -508830229
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 053f9bb1689989641b370acd53f4563c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff41f7df065e4514c9cacaece2113db2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,8 +113,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5999634873159427558
-BoxCollider2D:
+--- !u!58 &3735716020534292082
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,16 +126,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003980577, y: -0.27067965}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.00000011920929, y: -0.6209709}
   serializedVersion: 2
-  m_Size: {x: 0.9252428, y: 1.3949515}
-  m_EdgeRadius: 0
+  m_Radius: 0.36942834
