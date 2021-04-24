@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class TextManager : MonoBehaviour
+public class TextManager : Singleton<TextManager>
 {
 	public TextMeshProUGUI main;
 	public TextMeshProUGUI scoreTxt;
@@ -18,8 +18,25 @@ public class TextManager : MonoBehaviour
 		scoreTxt.text = score.ToString();
 	}
 
-	private void Update() {
-		AddScore(1);
+	public void ShowLostText() {
+		main.text = "PRESS ANY KEY TO RESTART";
+		StartCoroutine(PulseMain());
+	}
+
+	private IEnumerator PulseMain() {
+		for (var i = 0f; i <= 1; i += Time.deltaTime) {
+			main.color = new Color(main.color.r, main.color.g, main.color.b, i);
+
+			yield return null;
+		}
+
+		for (var i = 1f; i >= 0; i -= Time.deltaTime) {
+			main.color = new Color(main.color.r, main.color.g, main.color.b, i);
+
+			yield return null;
+		}
+
+		StartCoroutine(PulseMain());
 	}
 
 	private IEnumerator FadeInMain() {

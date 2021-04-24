@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /**
- * alla levels, souls powerup på alla
+ * alla levels, souls powerup pï¿½ alla
  * 
  * level 1, pagans 
  * level 2, dimma lust pagans
@@ -22,17 +23,34 @@ public class LevelManager : Singleton<LevelManager>
 {
 	public List<Level> levels;
 	private Level currentLevel = null;
+	private bool lost = false;
+	private float lostTimeOut = 1f;
 
 	public void Awake() {
 		StartCoroutine(LevelTransition(0));
 	}
 
 	public void Update() {
-		if (currentLevel == null) return;
+		if (lost) {
+			if (lostTimeOut >= 0f) {
+				lostTimeOut -= Time.deltaTime;
+			} else if (Input.anyKey) {
+				SceneManager.LoadScene("main");
+			}
+			return;
+		}
 
+		if (currentLevel == null) return;
 		currentLevel.Tick();
+		TextManager.Instance.AddScore(1);
 	}
 
+	public void Lost() {
+		lost = true;
+		lostTimeOut = 1f;
+		TextManager.Instance.ShowLostText();
+	}
+	
 	private IEnumerator LoadLevel(int i) {
 		currentLevel = levels[i];
 

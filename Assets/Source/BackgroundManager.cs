@@ -14,6 +14,8 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
 	public void ToggleFog(bool state)
 	{
+		return; // temp disable
+
 		if (state) {
 			fog.SetActive(state);
 			fog.GetComponent<Parallax>().StartFog();

@@ -5,7 +5,7 @@ public class LostSoul : MonoBehaviour, IEnemy
 {
 	public int Health { get; set; }
 	public float transitionTime = 4.5f;
-
+	public AudioClip hitSound;
 	private Vector3 velocity = Vector3.zero;
 
 	private void Start()
@@ -29,6 +29,8 @@ public class LostSoul : MonoBehaviour, IEnemy
 
 	public void TakeDamage(int damage)
 	{
+		AudioManager.Instance.PlaySingle(hitSound, 0.3f);
+
 		Health -= damage;
 		if (Health <= 0)
 		{
