@@ -6,13 +6,13 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 	public int Health { get; set; }
 	public AudioClip hitSound;
 	private float ySpeed = 1f;
-	private float spinSpeed = 0.03f;
+	private float spinSpeed = 0f;
 	private float xTransitionTime = 3.5f;
 
 	private void Start()
 	{
 		ySpeed = Random.Range(0.6f, 1.2f);
-		spinSpeed = Random.Range(-0.04f, 0.04f);
+		spinSpeed = Random.Range(-0.3f, 0.3f);
 	}
 
 	private void Update()

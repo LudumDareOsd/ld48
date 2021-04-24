@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 4.5
-  hitSound: {fileID: 8300000, guid: d1d61381cbff2a64f85d04b2e048023b, type: 3}
+  hitSound: {fileID: 8300000, guid: f0a699de514feff428c22a20c0690308, type: 3}
 --- !u!114 &5067383458109907662
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e17fb380581f9488e1302fd69afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: d1d61381cbff2a64f85d04b2e048023b, type: 3}
+  hitSound: {fileID: 8300000, guid: f0a699de514feff428c22a20c0690308, type: 3}
 --- !u!212 &5566428933891033321
 SpriteRenderer:
   m_ObjectHideFlags: 0

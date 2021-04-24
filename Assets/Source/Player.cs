@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	private float moveSpeedY = 6f;
 	private float accelerationSpeed = 3f;
 	private Rigidbody2D rb;
-	private int health = 1;
+	private int health = 2;
 	private float attackTime = 0f;
 	private float attackTimeCd = 0f;
 	private bool attackPrio = true;
