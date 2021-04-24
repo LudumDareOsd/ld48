@@ -6,13 +6,14 @@ public class Parallax : MonoBehaviour
 {
 	private float height;
 	private float startPos;
-	private Vector3 pos = Vector3.zero;
+	private Vector3 pos;
 
 	public float parallaxEffect;
 
     void Start()
     {
-		startPos = transform.position.y;
+		pos = transform.position;
+		startPos = 0f;
 		height = GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
