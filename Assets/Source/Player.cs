@@ -135,7 +135,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void SetSwordSprite(int health) {
-		Debug.Log(health);
+		//Debug.Log(health);
 
 		if (health == 1) {
 			srSword.sprite = swordShort;

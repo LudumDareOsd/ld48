@@ -3,7 +3,6 @@ using System.Collections;
 
 public class IceDrop : MonoBehaviour, IEnemy
 {
-
 	public int Health { get; set; }
 
 	private float ySpeed = -1f;
@@ -15,7 +14,6 @@ public class IceDrop : MonoBehaviour, IEnemy
 
 	private void Update()
 	{
-		//float step = xSpeed * Time.deltaTime; // calculate distance to move
 		var step = ySpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 6.5f, 0), step);
 

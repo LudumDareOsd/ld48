@@ -48,8 +48,6 @@ public class LostSoul : MonoBehaviour, IEnemy
 	IEnumerator LerpPosition(Vector3 targetPosition, float duration)
 	{
 		var time = 0f;
-		var startPosition = transform.position.x;
-
 		while (time < duration)
 		{
 			transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, duration);
