@@ -5,8 +5,9 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
 	public GameObject[] enemies;
+	public float spawnCooldown = 5f;
+
 	private Transform enemyContainer;
-	private float spawnCooldown = 5f;
 	private float spawnCounter = 0f;
 
 	private void Start()
@@ -27,7 +28,7 @@ public class Level : MonoBehaviour
 		var enemy = enemies[Random.Range(0, enemies.Length)];
 		var spawn = Instantiate(enemy, transform);
 		var ienemy = spawn.GetComponent<IEnemy>();
-		ienemy.Spawn(new Vector3(Random.Range(-6.5f, 6.5f), -5f));
+		ienemy.Spawn();
 		spawn.transform.SetParent(enemyContainer);
 	}
 }
