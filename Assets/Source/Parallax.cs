@@ -23,7 +23,6 @@ public class Parallax : MonoBehaviour
 
 		if (transform.position.y > startPos + height) {
 			var delta = transform.position.y - (startPos + height);
-			Debug.Log(delta);
 			pos = new Vector3(0, startPos + delta, 0);
 		}
     }
