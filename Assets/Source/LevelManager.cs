@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
 	public List<Level> levels;
 	private Level currentLevel = null;
@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 	}
 
 	public void Update() {
-		currentLevel.Spawn();
+		currentLevel.Tick();
 	}
 
 	private IEnumerator LoadLevel(int i) {
