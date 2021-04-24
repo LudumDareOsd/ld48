@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 /**
  * alla levels, souls powerup på alla
@@ -22,13 +22,29 @@ public class LevelManager : Singleton<LevelManager>
 {
 	public List<Level> levels;
 	private Level currentLevel = null;
+	private bool lost = false;
 
 	public void Awake() {
 		StartCoroutine(LoadLevel(0));
 	}
 
 	public void Update() {
+		if (lost) {
+			if (Input.anyKey) {
+				SceneManager.LoadScene("main");
+			}
+			return;
+		}
+
 		currentLevel.Tick();
+		TextManager.Instance.AddScore(1);
+
+		
+	}
+
+	public void Lost() {
+		lost = true;
+		TextManager.Instance.ShowLostText();
 	}
 
 	private IEnumerator LoadLevel(int i) {

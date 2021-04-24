@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	private float attackTime = 0f;
 	private float attackTimeCd = 0f;
 	private bool attackPrio = true;
+	private float invulnerableTimer = 0f;
+	private float blinkTimer = 0f;
 
 	public AudioClip swordSwing;
 
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour {
 	public Sprite right;
 	public Sprite rightAttack;
 	public Sprite straight;
-	
+
 	public SpriteRenderer srSword;
 	public Sprite swordShort;
 	public Sprite swordMiddle;
@@ -56,8 +58,10 @@ public class Player : MonoBehaviour {
 
 	public void FixedUpdate() {
 
+		CheckInvulnerable();
+
 		var xAxis = Input.GetAxis("Horizontal");
-		
+
 		rb.velocity += new Vector2(accelerationSpeed * xAxis, accelerationSpeed * Input.GetAxis("Vertical"));
 
 		if (rb.velocity.x > moveSpeed) {
@@ -87,11 +91,37 @@ public class Player : MonoBehaviour {
 		rb.velocity = rb.velocity * 0.85f;
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (invulnerableTimer <= 0f) {
+			if (collision.gameObject.GetComponent<IEnemy>() != null) {
+				health--;
+				
+				invulnerableTimer = 2f;
+				srPlayer.enabled = false;
+				srSword.enabled = false;
+
+				if (health <= 0) {
+					LevelManager.Instance.Lost();
+					Destroy(this);
+				}
+			}
+		}
+	}
+
 	public void AddHealth(int health) {
 		this.health += health;
+
+		if (this.health >= 3) {
+			this.health = 3;
+		}
 	}
 
 	private void Attack(float xAxis) {
+
+		if (invulnerableTimer >= 0f) {
+			return;
+		}
+
 		AudioManager.Instance.PlaySingle(swordSwing, 0.3f);
 
 		if (xAxis > 0) {
@@ -110,7 +140,22 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	private void CheckInvulnerable() {
+		if (invulnerableTimer >= 0) {
+			invulnerableTimer -= Time.deltaTime;
+			blinkTimer -= Time.deltaTime;
+
+			if (blinkTimer <= 0) {
+				blinkTimer = 0.1f;
+				srPlayer.enabled = !srPlayer.enabled;
+			}
+		} else {
+			srPlayer.enabled = true;
+			srSword.enabled = true;
+		}
+	}
+
 	private void AttackLeft() {
 
 		var collider = attack.GetComponent<BoxCollider2D>();
@@ -136,14 +181,12 @@ public class Player : MonoBehaviour {
 
 		attack.SetActive(true);
 
-		
-		
 	}
 
 	private void AttackRight() {
 
 		var collider = attack.GetComponent<BoxCollider2D>();
-		
+
 
 		if (health == 1) {
 			srSword.sprite = swordShortRight;
@@ -161,7 +204,7 @@ public class Player : MonoBehaviour {
 			collider.offset = new Vector2(0.8f, -1.2f);
 			collider.size = new Vector2(1.5f, 1.4f);
 		}
-		
+
 		srPlayer.sprite = rightAttack;
 
 		attack.SetActive(true);
