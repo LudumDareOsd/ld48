@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9187149547400611757}
   - component: {fileID: 8432490040744722209}
-  - component: {fileID: -7937969826091513369}
+  - component: {fileID: 5067383458109907662}
   - component: {fileID: 5566428933891033321}
   - component: {fileID: 5999634873159427558}
   m_Layer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 4.5
---- !u!114 &-7937969826091513369
+--- !u!114 &5067383458109907662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 053f9bb1689989641b370acd53f4563c, type: 3}
   - {fileID: 21300000, guid: 18809ab6b49a29742bbbf33ef5d4767d, type: 3}
-  switchTime: 1.33
+  switchTime: 1.39
 --- !u!212 &5566428933891033321
 SpriteRenderer:
   m_ObjectHideFlags: 0
