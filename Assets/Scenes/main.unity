@@ -730,9 +730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab84fab3da35c43a5cd4f51658a697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: {fileID: 0}
-  right: {fileID: 0}
-  straight: {fileID: 0}
+  left: {fileID: 21300000, guid: c0b553be039b74540aa28b4a85f498dc, type: 3}
+  right: {fileID: 21300000, guid: d980a8e5325f071419cbf61f9c849259, type: 3}
+  straight: {fileID: 21300000, guid: 50a5cec2260379b49b620e921a17fab2, type: 3}
 --- !u!50 &903731556
 Rigidbody2D:
   serializedVersion: 4
