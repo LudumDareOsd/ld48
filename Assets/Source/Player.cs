@@ -11,8 +11,12 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-    }
+		var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+		if (move != Vector3.zero) {
+			gameObject.transform.forward = move;
+		}
+	}
 }
