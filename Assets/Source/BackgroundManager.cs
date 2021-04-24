@@ -14,12 +14,14 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
 	public void ToggleFog(bool state)
 	{
-		return; // temp disable
-
-		if (state) {
-			fog.SetActive(state);
+		Debug.Log("Toggle fog " + state);
+		if (state)
+		{
 			fog.GetComponent<Parallax>().StartFog();
 		}
-		else fog.GetComponent<Parallax>().StopFog();
+		else
+		{
+			fog.GetComponent<Parallax>().StopFog();
+		}
 	}
 }

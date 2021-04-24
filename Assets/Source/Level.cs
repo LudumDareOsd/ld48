@@ -7,6 +7,7 @@ public class Level : MonoBehaviour
 	public GameObject[] enemies;
 	public float levelDuration = 60f;
 	public float spawnCooldown = 5f;
+	public bool hasFog = false;
 
 	private Transform enemyContainer;
 	private float spawnCounter = 0f;

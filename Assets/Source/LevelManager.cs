@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 /**
- * alla levels, souls powerup p� alla
+ * alla levels har souls powerup
  * 
  * level 1, pagans 
  * level 2, dimma lust pagans
@@ -40,7 +40,7 @@ public class LevelManager : Singleton<LevelManager>
 			return;
 		}
 
-		if (currentLevel == null) return;
+		if (!currentLevel) return;
 		currentLevel.Tick();
 		TextManager.Instance.AddScore(1);
 	}
@@ -52,36 +52,48 @@ public class LevelManager : Singleton<LevelManager>
 	}
 	
 	private IEnumerator LoadLevel(int i) {
+		Debug.Log("Switching to level " + i);
+
 		currentLevel = levels[i];
 
 		yield return new WaitForSeconds(currentLevel.levelDuration);
 
-		StartCoroutine(LevelTransition(++i));
+		if (++i >= levels.Count)
+		{
+			Debug.LogError("Switched to a level not set in LevelManager");
+			yield break;
+		}
+
+		StartCoroutine(LevelTransition(i));
 	}
 
 	private IEnumerator LevelTransition(int i)
 	{
 		Debug.Log("Transition to level " + i);
 
+		BackgroundManager.Instance.ToggleFog(levels[i].hasFog);
+
 		switch (i)
 		{
 			case 0: {
-					// transition to level 1
-					BackgroundManager.Instance.ToggleFog(true);
+				// transition to first level etc
 				break;
 			}
 			case 1: {
-					// transition to level 2
-					BackgroundManager.Instance.ToggleFog(false);
-					break;
+				//
+				break;
+			}
+			case 2: {
+				//
+				break;
 			}
 			case 9: {
-				// transition to level  WIN GAME?!?!?
+				// transition to hell
 				Debug.Log("YOU WIN!");
 				break;
 			}
 			default:
-				Debug.LogError("Unhandled LevelTransition");
+				Debug.Log("Unhandled LevelTransition: " + i);
 				i = 0;
 				break;
 		}

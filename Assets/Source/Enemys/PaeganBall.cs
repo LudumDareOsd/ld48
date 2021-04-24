@@ -30,7 +30,7 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 	public void Spawn()
 	{
 		Health = 10;
-		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
+		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 	}
 
@@ -67,7 +67,6 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 			yield return null;
 		}
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
-
 	}
 
 
