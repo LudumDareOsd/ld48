@@ -11,7 +11,9 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	private void Start()
 	{
-		spinSpeed = Random.Range(-0.03f, 0.03f);
+		Health = 10;
+		ySpeed = Random.Range(0.6f, 1.2f);
+		spinSpeed = Random.Range(-0.04f, 0.04f);
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 	}
 
@@ -39,6 +41,7 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		if (Health <= 0)
 		{
 			// Do the death things
+			Destroy(gameObject);
 		}
 	}
 
