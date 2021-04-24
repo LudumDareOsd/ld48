@@ -37,7 +37,7 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 
 	public void TakeDamage(int damage)
 	{
-		Health = -damage;
+		Health -= damage;
 		if (Health <= 0)
 		{
 			// Do the death things
@@ -45,9 +45,11 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		}
 	}
 
-	private void OnTriggerEnter(Collider other)
-	{
-		TakeDamage(5);
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.name == "Attack") {
+			collision.gameObject.SetActive(false);
+			TakeDamage(5);
+		}
 	}
 
 	IEnumerator LerpXPosition(float targetXPosition, float duration)
@@ -66,5 +68,6 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
 
 	}
+
 
 }

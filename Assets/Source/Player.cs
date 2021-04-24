@@ -8,7 +8,9 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D rb;
 	private int health = 1;
 	private float attackTime = 0f;
-	
+	private float attackTimeCd = 0f;
+	private bool attackPrio = true;
+
 	public SpriteRenderer srPlayer;
 	public Sprite left;
 	public Sprite leftAttack;
@@ -29,26 +31,36 @@ public class Player : MonoBehaviour {
 	public Sprite swordMiddleRight;
 	public Sprite swordLongRight;
 
+	public GameObject attack;
+
 	public void Awake() {
 		rb = GetComponent<Rigidbody2D>();
-		SetHealth(1);
 	}
 
 	public void Update() {
 		var xAxis = Input.GetAxis("Horizontal");
 
-		if (Input.GetButtonDown("Fire1") && attackTime <= 0) {
+		if (Input.GetButtonDown("Fire1") && attackTimeCd <= 0) {
 			attackTime = 0.2f;
-
-			Debug.Log("attack");
+			attackTimeCd = 0.5f;
 
 			if (xAxis > 0) {
-				srSword.sprite = swordShortRight;
-				srPlayer.sprite = rightAttack;
+				AttackRight();
+			} else if (xAxis < 0) {
+				AttackLeft();
 			} else {
-				srSword.sprite = swordShortLeft;
-				srPlayer.sprite = leftAttack;
+				if (attackPrio) {
+					attackPrio = !attackPrio;
+					AttackLeft();
+				} else {
+					attackPrio = !attackPrio;
+					AttackRight();
+				}
 			}
+		}
+
+		if (attackTimeCd > 0) {
+			attackTimeCd -= Time.deltaTime;
 		}
 	}
 
@@ -77,6 +89,7 @@ public class Player : MonoBehaviour {
 		if (attackTime >= 0) {
 			attackTime -= Time.deltaTime;
 		} else {
+			attack.SetActive(false);
 			SetPlayerSprite(xAxis);
 			SetSwordSprite(health);
 		}
@@ -84,9 +97,30 @@ public class Player : MonoBehaviour {
 		rb.velocity = rb.velocity * 0.85f;
 	}
 
-	public void SetHealth(int health) {
-		this.health = health;
-		SetSwordSprite(health);
+	public void AddHealth(int health) {
+		this.health += health;
+	}
+	
+	private void AttackLeft() {
+		srSword.sprite = swordShortLeft;
+		srPlayer.sprite = leftAttack;
+
+		attack.SetActive(true);
+
+		var collider = attack.GetComponent<BoxCollider2D>();
+		collider.offset = new Vector2(-0.6f, -0.8f);
+		collider.size = new Vector2(0.7f, 0.2f);
+	}
+
+	private void AttackRight() {
+		srSword.sprite = swordShortRight;
+		srPlayer.sprite = rightAttack;
+
+		attack.SetActive(true);
+
+		var collider = attack.GetComponent<BoxCollider2D>();
+		collider.offset = new Vector2(0.6f, -0.8f);
+		collider.size = new Vector2(0.7f, 0.2f);
 	}
 
 	private void SetPlayerSprite(float xAxis) {
@@ -101,6 +135,8 @@ public class Player : MonoBehaviour {
 	}
 
 	private void SetSwordSprite(int health) {
+		Debug.Log(health);
+
 		if (health == 1) {
 			srSword.sprite = swordShort;
 		} else if (health == 2) {

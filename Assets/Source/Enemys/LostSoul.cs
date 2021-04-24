@@ -29,17 +29,20 @@ public class LostSoul : MonoBehaviour, IEnemy
 
 	public void TakeDamage(int damage)
 	{
-		Health = -damage;
+		Health -= damage;
 		if (Health <= 0)
 		{
+			GameObject.Find("Player").GetComponent<Player>().AddHealth(1);
 			// Do the death things
 			Destroy(gameObject);
 		}
 	}
 
-	private void OnTriggerEnter(Collider other)
-	{
-		TakeDamage(5);
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.name == "Attack") {
+			collision.gameObject.SetActive(false);
+			TakeDamage(5);
+		}
 	}
 
 	IEnumerator LerpPosition(Vector3 targetPosition, float duration)
