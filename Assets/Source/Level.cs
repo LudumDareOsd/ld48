@@ -5,6 +5,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
 	public GameObject[] enemies;
+	public float levelDuration = 60f;
 	public float spawnCooldown = 5f;
 
 	private Transform enemyContainer;

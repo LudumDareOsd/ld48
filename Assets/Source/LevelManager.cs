@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 /**
- * alla levels, souls powerup på alla
+ * alla levels, souls powerup pï¿½ alla
  * 
  * level 1, pagans 
  * level 2, dimma lust pagans
@@ -26,7 +27,7 @@ public class LevelManager : Singleton<LevelManager>
 	private float lostTimeOut = 1f;
 
 	public void Awake() {
-		StartCoroutine(LoadLevel(0));
+		StartCoroutine(LevelTransition(0));
 	}
 
 	public void Update() {
@@ -39,6 +40,7 @@ public class LevelManager : Singleton<LevelManager>
 			return;
 		}
 
+		if (currentLevel == null) return;
 		currentLevel.Tick();
 		TextManager.Instance.AddScore(1);
 	}
@@ -48,11 +50,44 @@ public class LevelManager : Singleton<LevelManager>
 		lostTimeOut = 1f;
 		TextManager.Instance.ShowLostText();
 	}
-
+	
 	private IEnumerator LoadLevel(int i) {
 		currentLevel = levels[i];
 
-		yield return null;
-		// yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(currentLevel.levelDuration);
+
+		StartCoroutine(LevelTransition(++i));
+	}
+
+	private IEnumerator LevelTransition(int i)
+	{
+		Debug.Log("Transition to level " + i);
+
+		switch (i)
+		{
+			case 0: {
+					// transition to level 1
+					BackgroundManager.Instance.ToggleFog(true);
+				break;
+			}
+			case 1: {
+					// transition to level 2
+					BackgroundManager.Instance.ToggleFog(false);
+					break;
+			}
+			case 9: {
+				// transition to level  WIN GAME?!?!?
+				Debug.Log("YOU WIN!");
+				break;
+			}
+			default:
+				Debug.LogError("Unhandled LevelTransition");
+				i = 0;
+				break;
+		}
+
+		yield return new WaitForSeconds(5f);
+
+		StartCoroutine(LoadLevel(i));
 	}
 }
