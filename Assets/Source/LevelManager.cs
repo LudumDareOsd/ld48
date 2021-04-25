@@ -19,15 +19,18 @@ using UnityEngine.SceneManagement;
  **/
 public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
+	public List<AudioClip> music;
 	public GameObject lostSoul;
 	private Level currentLevel = null;
 	private bool lost = false;
 	private float lostTimeOut = 1f;
 	private Transform enemyContainer;
+	private AudioSource audioSource;
 
 	public void Awake() {
 		StartCoroutine(LevelTransition(0));
 		enemyContainer = transform.Find("EnemyContainer");
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	public void Update() {
@@ -89,6 +92,8 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 1: {
 					TextManager.Instance.ShowText("LUST");
+					audioSource.clip = music[2];
+					audioSource.Play();
 					SpawnSoul();
 					break;
 				}
@@ -105,6 +110,8 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 4: {
 					TextManager.Instance.ShowText("ANGER");
+					audioSource.clip = music[1];
+					audioSource.Play();
 					SpawnSoul();
 					BackgroundManager.Instance.LoadBackGround(4);
 					BackgroundManager.Instance.UnLoadBackGround(2);
@@ -125,6 +132,8 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 7: {
 					TextManager.Instance.ShowText("FRAUD");
+					audioSource.clip = music[0];
+					audioSource.Play();
 					BackgroundManager.Instance.UnLoadBackGround(5);
 					BackgroundManager.Instance.UnLoadBackGround(6);
 					break;
