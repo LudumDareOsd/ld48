@@ -1193,7 +1193,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 694afde1b2643334b8599f754f2b66f7, type: 3}
   lostSoul: {fileID: 7298991456915058498, guid: 5e597a5a31f36cf458461a86760e31dc, type: 3}
   fadeToBlack: {fileID: 2018980736}
-  audioSource: {fileID: 1176306649}
 --- !u!4 &363520230
 Transform:
   m_ObjectHideFlags: 0
@@ -4214,7 +4213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ab84fab3da35c43a5cd4f51658a697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordSwing: {fileID: 8300000, guid: 6f8e96d9cd1f74e42b683d5b10572678, type: 3}
+  swordSwings:
+  - {fileID: 8300000, guid: 6f8e96d9cd1f74e42b683d5b10572678, type: 3}
+  - {fileID: 8300000, guid: f93111e83eec86e4084f7129f47ba122, type: 3}
+  - {fileID: 8300000, guid: 2dd31ec2c17cc3e489ddd72a393974ba, type: 3}
   death: {fileID: 0}
   srPlayer: {fileID: 1536010023}
   left: {fileID: 21300000, guid: c0b553be039b74540aa28b4a85f498dc, type: 3}

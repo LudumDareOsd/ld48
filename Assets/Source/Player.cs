@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour {
 	private float invulnerableTimer = 0f;
 	private float blinkTimer = 0f;
 
-	public AudioClip swordSwing;
+	public List<AudioClip> swordSwings;
 	public AudioClip death;
 
 	public SpriteRenderer srPlayer;
@@ -126,7 +127,7 @@ public class Player : MonoBehaviour {
 			return;
 		}
 
-		AudioManager.Instance.PlaySingle(swordSwing, 0.3f);
+		AudioManager.Instance.PlayRandom(swordSwings, 0.3f);
 
 		if (xAxis > 0) {
 			AttackRight();

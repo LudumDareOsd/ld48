@@ -63,6 +63,12 @@ public class AudioManager : Singleton<AudioManager> {
 		return audioSrc;
 	}
 
+	public AudioSource PlayRandom(List<AudioClip> audioClips, float volume) {
+		var clip = audioClips[Random.Range(0, audioClips.Count)];
+
+		return PlaySingleHigh(clip, volume);
+	}
+
 	public GameObject createSource() {
 		var newSource = new GameObject("AudioSource");
 		newSource.AddComponent<AudioSource>();
