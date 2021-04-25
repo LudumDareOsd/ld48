@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 /**
  * alla levels har souls powerup
  * 
@@ -18,7 +17,6 @@ using UnityEngine.SceneManagement;
  * level 9, finish game / dyk ner i avgrunden
  * 
  **/
-
 public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
 	private Level currentLevel = null;
@@ -56,6 +54,8 @@ public class LevelManager : Singleton<LevelManager> {
 		currentLevel = levels[i];
 
 		yield return new WaitForSeconds(currentLevel.levelDuration);
+
+		currentLevel.Despawn();
 
 		if (++i >= levels.Count) {
 			Debug.LogError("Switched to a level not set in LevelManager");

@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class LostSoul : MonoBehaviour, IEnemy
+public class LostSoul : BaseEnemy, IEnemy
 {
 	public int Health { get; set; }
 	public float transitionTime = 4.5f;
 	public AudioClip hitSound;
-	private Vector3 velocity = Vector3.zero;
 
 	private void Start()
 	{
@@ -24,7 +23,12 @@ public class LostSoul : MonoBehaviour, IEnemy
 	{
 		Health = 20;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
-		StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
+		//StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
+		StartRandomMovement(transitionTime, 3f);
+	}
+
+	public void Despawn()
+	{
 	}
 
 	public void TakeDamage(int damage)
@@ -47,16 +51,5 @@ public class LostSoul : MonoBehaviour, IEnemy
 		}
 	}
 
-	IEnumerator LerpPosition(Vector3 targetPosition, float duration)
-	{
-		var time = 0f;
-		while (time < duration)
-		{
-			transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, duration);
-			time += Time.deltaTime;
-			yield return null;
-		}
-		StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
-	}
 
 }

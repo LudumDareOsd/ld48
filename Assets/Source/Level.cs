@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
 
 	private Transform enemyContainer;
 	private float spawnCounter = 0f;
+	private List<GameObject> activeEnemies = new List<GameObject>();
 
 	private void Start()
 	{
@@ -26,11 +27,22 @@ public class Level : MonoBehaviour
 		}
 	}
 
-	private void Spawn() {
+	private void Spawn()
+	{
 		var enemy = enemies[Random.Range(0, enemies.Length)];
 		var spawn = Instantiate(enemy, transform);
 		var ienemy = spawn.GetComponent<IEnemy>();
 		ienemy.Spawn();
+		activeEnemies.Add(enemy);
 		spawn.transform.SetParent(enemyContainer);
+	}
+
+	public void Despawn()
+	{
+		foreach (var enemy in activeEnemies)
+		{
+			enemy.GetComponent<IEnemy>().Despawn();
+			activeEnemies.Remove(enemy);
+		}
 	}
 }

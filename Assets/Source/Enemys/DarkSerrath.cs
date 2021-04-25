@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DarkSerrath : MonoBehaviour, IEnemy
+public class DarkSerrath : BaseEnemy, IEnemy
 {
 	public int Health { get; set; }
 	public float transitionTime = 4.5f;
 	public AudioClip hitSound;
-	private Vector3 velocity = Vector3.zero;
 
 	private void Start() {
 	}
@@ -21,7 +20,12 @@ public class DarkSerrath : MonoBehaviour, IEnemy
 	public void Spawn() {
 		Health = 20;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
-		StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
+		//StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
+		StartRandomMovement(transitionTime, .5f);
+	}
+
+	public void Despawn()
+	{
 	}
 
 	public void TakeDamage(int damage) {

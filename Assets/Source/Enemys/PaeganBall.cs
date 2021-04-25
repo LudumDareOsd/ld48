@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PaeganBall : MonoBehaviour, IEnemy {
-
+public class PaeganBall : BaseEnemy, IEnemy
+{
 	public int Health { get; set; }
 	public AudioClip hitSound;
 	private float ySpeed = 1f;
@@ -32,6 +32,12 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		Health = 10;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
 		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
+	}
+
+	public void Despawn()
+	{
+		Debug.Log("DESPAWN PAGAN BALL");
+		//MoveTo(new Vector3(transform.position.x, 6.5f, 0), 3f);
 	}
 
 	public void TakeDamage(int damage)
