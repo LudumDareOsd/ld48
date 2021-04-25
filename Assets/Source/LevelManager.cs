@@ -22,16 +22,18 @@ public class LevelManager : Singleton<LevelManager> {
 	public List<AudioClip> music;
 	public GameObject lostSoul;
 	public SpriteRenderer fadeToBlack;
-	public AudioSource audioSource;
+	private AudioSource audioSource;
 	private Level currentLevel = null;
 	private bool lost = false;
 	private float lostTimeOut = 1f;
 	private Transform enemyContainer;
 	private bool tickLevel = false;
 
-	public void Awake() {
+	public void Start() {
 		enemyContainer = transform.Find("EnemyContainer");
-		StartCoroutine(LevelTransition(7));
+		audioSource = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
+
+		StartCoroutine(LevelTransition(0));
 	}
 
 	public void Update() {
@@ -75,6 +77,11 @@ public class LevelManager : Singleton<LevelManager> {
 	}
 
 	private IEnumerator LoadLevel(int i) {
+		if (lost) {
+			StopAllCoroutines();
+			yield return null;
+		}
+
 		Debug.Log("Switching to level " + i);
 
 		currentLevel = levels[i];
@@ -95,6 +102,11 @@ public class LevelManager : Singleton<LevelManager> {
 	}
 
 	private IEnumerator LevelTransition(int i) {
+		if (lost) {
+			StopAllCoroutines();
+			yield return null;
+		}
+
 		Debug.Log("Transition to level " + i);
 
 		BackgroundManager.Instance.ToggleFog(levels[i].hasFog);
@@ -102,6 +114,9 @@ public class LevelManager : Singleton<LevelManager> {
 		switch (i) {
 			case 0: {
 					TextManager.Instance.ShowText("LIMBO");
+					audioSource.clip = music[0];
+					audioSource.Play();
+					SpawnSoul();
 					BackgroundManager.Instance.LoadBackGround(1);
 					break;
 				}
