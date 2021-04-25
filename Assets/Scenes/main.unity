@@ -3582,7 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7298991456915058498, guid: 599130cf646ad044d9895ed4939008ee, type: 3}
+  - {fileID: 2862889184207421520, guid: 304213e3c02ee6c4b8e7f07594cd04ca, type: 3}
   levelDuration: 20
   spawnCooldown: 1.28
   hasFog: 0
@@ -7213,9 +7213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7298991456915058498, guid: 599130cf646ad044d9895ed4939008ee, type: 3}
+  - {fileID: 699198736353310698, guid: c341819c298b81943a4f00b242c8154d, type: 3}
   levelDuration: 20
-  spawnCooldown: 1.28
+  spawnCooldown: 1
   hasFog: 0
 --- !u!1 &1732457629
 GameObject:
