@@ -17,7 +17,7 @@ public class BloodBullet : MonoBehaviour
 		sprite = transform.GetChild(0);
 		
 		// mostly so they dont clump up some randomness
-		speed = Random.Range(2.5f, 3.5f);
+		speed = Random.Range(3f, 4.5f);
 		rotateSpeed = Random.Range(110f, 180f); 
 	}
 

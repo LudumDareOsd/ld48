@@ -21,7 +21,7 @@ public class FallingDant : BaseEnemy, IEnemy
 
 	public void Spawn() {
 		Health = 1;
-		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), 5f, 0f);
+		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), 5.9f, 0f);
 	}
 
 	public void Despawn()

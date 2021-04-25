@@ -18,9 +18,9 @@ public class BaseEnemy : MonoBehaviour
 		StartCoroutine(moveCoroutine);
 	}
 
-	public void StartRandomMovement(float duration, float waitTime)
+	public void StartRandomMovement(float duration, float waitTime, float yMin = -3.5f, float yMax = 3.5f)
 	{
-		handleCoroutine = LerpRandomPosition(duration, waitTime);
+		handleCoroutine = LerpRandomPosition(duration, waitTime, yMin, yMax);
 		StartCoroutine(handleCoroutine);
 	}
 
@@ -44,12 +44,12 @@ public class BaseEnemy : MonoBehaviour
 		yield break;
 	}
 
-	IEnumerator LerpRandomPosition(float duration, float waitTime)
+	IEnumerator LerpRandomPosition(float duration, float waitTime, float yMin = -3.5f, float yMax = 3.5f)
 	{
 		while (true)
 		{
 			yield return new WaitForSeconds(waitTime);
-			moveCoroutine = LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), duration);
+			moveCoroutine = LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(yMin, yMax), 0), duration);
 			StartCoroutine(moveCoroutine);
 			yield return null;
 		}

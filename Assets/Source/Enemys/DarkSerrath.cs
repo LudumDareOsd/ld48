@@ -16,7 +16,7 @@ public class DarkSerrath : BaseEnemy, IEnemy
 	public void Spawn() {
 		Health = 20;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
-		StartRandomMovement(transitionTime, 3.5f);
+		StartRandomMovement(transitionTime, 3.5f, -3.5f, 0.5f);
 	}
 
 	public void Despawn()

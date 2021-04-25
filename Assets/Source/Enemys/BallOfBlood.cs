@@ -8,7 +8,7 @@ public class BallOfBlood : BaseEnemy, IEnemy
 	public GameObject bullet;
 
 	private float shootCooldown = 4f;
-	private float transitionTime = 6f;
+	private float transitionTime = 2f;
 
 	private void Start()
 	{
@@ -30,9 +30,9 @@ public class BallOfBlood : BaseEnemy, IEnemy
 
 	public void Spawn()
 	{
-		Health = 20;
+		Health = 15;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
-		StartRandomMovement(transitionTime, 3f);
+		StartRandomMovement(transitionTime, 3f, -3.5f, 0f);
 	}
 
 	public void Despawn()

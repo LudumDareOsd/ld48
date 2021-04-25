@@ -45,5 +45,10 @@ public class Level : MonoBehaviour
 				enemy.GetComponent<IEnemy>().Despawn();
 			}
 		}
+		
+		foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("EnemyProjectile"))
+		{
+			Destroy(bullet);
+		}
 	}
 }
