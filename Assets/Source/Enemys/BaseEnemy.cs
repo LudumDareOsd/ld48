@@ -18,36 +18,38 @@ public class BaseEnemy : MonoBehaviour
 		StartCoroutine(moveCoroutine);
 	}
 
-	public void StopMoving()
-	{
-		if (handleCoroutine != null) StopCoroutine(handleCoroutine);
-		if (moveCoroutine != null) StopCoroutine(moveCoroutine);
-	}
-
 	public void StartRandomMovement(float duration, float waitTime)
 	{
 		handleCoroutine = LerpRandomPosition(duration, waitTime);
 		StartCoroutine(handleCoroutine);
 	}
 
+	public void StopMoving()
+	{
+		if (handleCoroutine != null) StopCoroutine(handleCoroutine);
+		if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+	}
+
 	private IEnumerator LerpPosition(Vector3 targetPosition, float duration)
 	{
 		var time = 0f;
+		var startPosition = transform.position;
 		while (time < duration)
 		{
-			transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, duration);
 			time += Time.deltaTime;
+			var t = time / duration;
+			transform.position = Vector3.Lerp(startPosition, targetPosition, Mathf.SmoothStep(0.0f, 1.0f, t));
 			yield return null;
 		}
 		yield break;
 	}
 
-	IEnumerator LerpRandomPosition(float moveDuration, float waitTime)
+	IEnumerator LerpRandomPosition(float duration, float waitTime)
 	{
 		while (true)
 		{
 			yield return new WaitForSeconds(waitTime);
-			moveCoroutine = LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), moveDuration);
+			moveCoroutine = LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), duration);
 			StartCoroutine(moveCoroutine);
 			yield return null;
 		}

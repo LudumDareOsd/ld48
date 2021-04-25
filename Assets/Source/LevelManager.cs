@@ -26,6 +26,7 @@ public class LevelManager : Singleton<LevelManager> {
 	private float lostTimeOut = 1f;
 	private Transform enemyContainer;
 	private AudioSource audioSource;
+	private bool tickLevel = false;
 
 	public void Awake() {
 		StartCoroutine(LevelTransition(0));
@@ -43,8 +44,7 @@ public class LevelManager : Singleton<LevelManager> {
 			return;
 		}
 
-		if (!currentLevel) return;
-		currentLevel.Tick();
+		if (tickLevel) currentLevel.Tick();
 		TextManager.Instance.AddScore(1);
 	}
 
@@ -67,7 +67,10 @@ public class LevelManager : Singleton<LevelManager> {
 
 		currentLevel = levels[i];
 
+		// only tick level inside duration
+		tickLevel = true;
 		yield return new WaitForSeconds(currentLevel.levelDuration);
+		tickLevel = false;
 
 		currentLevel.Despawn();
 

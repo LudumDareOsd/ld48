@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class DarkSerrath : BaseEnemy, IEnemy
 {
-	public float transitionTime = 4.5f;
 	public AudioClip hitSound;
-
-	private void Start() {
-	}
+	private float transitionTime = 0.75f;
 
 	private void Update() {
 		if (transform.position.y > 6f) {
@@ -18,13 +15,14 @@ public class DarkSerrath : BaseEnemy, IEnemy
 
 	public void Spawn() {
 		Health = 20;
-		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
-		//StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
-		StartRandomMovement(transitionTime, .5f);
+		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
+		StartRandomMovement(transitionTime, 3.5f);
 	}
 
 	public void Despawn()
 	{
+		MoveTo(new Vector3(transform.position.x, -5.5f, 0), 3f);
+		Destroy(gameObject, 5f);
 	}
 
 	public void TakeDamage(int damage) {
@@ -44,15 +42,4 @@ public class DarkSerrath : BaseEnemy, IEnemy
 		}
 	}
 
-	IEnumerator LerpPosition(Vector3 targetPosition, float duration) {
-		var time = 0f;
-		var startPosition = transform.position.x;
-
-		while (time < duration) {
-			transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, duration);
-			time += Time.deltaTime;
-			yield return null;
-		}
-		StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
-	}
 }

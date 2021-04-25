@@ -37,11 +37,9 @@ public class PaeganBall : BaseEnemy, IEnemy
 
 	public void Despawn()
 	{
-		Debug.Log("DESPAWN PAGAN BALL " + Health);
-		if (Health > 0) {
-			spinSpeed = -1f;
-			MoveTo(new Vector3(transform.position.x, 6.5f, 0), 3f);
-		}
+		if (Health > 0) StopMoving();
+		spinSpeed = Random.Range(-0.05f, 0.05f);
+		ySpeed = 3f;
 	}
 
 	public void TakeDamage(int damage)

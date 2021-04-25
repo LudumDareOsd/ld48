@@ -3,8 +3,8 @@ using System.Collections;
 
 public class LostSoul : BaseEnemy, IEnemy
 {
-	public float transitionTime = 4.5f;
 	public AudioClip hitSound;
+	private float transitionTime = 4.5f;
 
 	private void Start()
 	{
@@ -22,7 +22,6 @@ public class LostSoul : BaseEnemy, IEnemy
 	{
 		Health = 20;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
-		//StartCoroutine(LerpPosition(new Vector3(Random.Range(-6.5f, 6.5f), Random.Range(-3.5f, 3.5f), 0), transitionTime));
 		StartRandomMovement(transitionTime, 3f);
 	}
 

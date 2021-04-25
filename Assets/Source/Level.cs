@@ -33,17 +33,17 @@ public class Level : MonoBehaviour
 		var spawn = Instantiate(enemy, transform);
 		var ienemy = spawn.GetComponent<IEnemy>();
 		ienemy.Spawn();
-		activeEnemies.Add(enemy);
+		activeEnemies.Add(spawn);
 		spawn.transform.SetParent(enemyContainer);
 	}
 
 	public void Despawn()
 	{
-		Debug.Log("Despawning " + activeEnemies.Count);
 		foreach (var enemy in activeEnemies)
 		{
-			enemy.GetComponent<IEnemy>().Despawn();
-			//activeEnemies.Remove(enemy);
+			if (enemy != null) {
+				enemy.GetComponent<IEnemy>().Despawn();
+			}
 		}
 	}
 }
