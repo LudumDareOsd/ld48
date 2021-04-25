@@ -94,14 +94,16 @@ public class Player : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (invulnerableTimer <= 0f) {
-			if (collision.gameObject.GetComponent<IEnemy>() != null) {
+			if (collision.tag == "EnemyProjectile" || collision.gameObject.GetComponent<IEnemy>() != null)
+			{
 				health--;
-				
+
 				invulnerableTimer = 2f;
 				srPlayer.enabled = false;
 				srSword.enabled = false;
 
-				if (health <= 0) {
+				if (health <= 0)
+				{
 					LevelManager.Instance.Lost();
 					AudioManager.Instance.PlaySingle(death, 0.1f);
 					Destroy(this);

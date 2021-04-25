@@ -169,7 +169,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 8241430256347773865, guid: d653a922e3ee08246a9cc5d98ce35fa1, type: 3}
   levelDuration: 20
-  spawnCooldown: 1.28
+  spawnCooldown: 1.1
   hasFog: 0
 --- !u!1 &135440732
 GameObject:
@@ -3687,8 +3687,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 2862889184207421520, guid: 304213e3c02ee6c4b8e7f07594cd04ca, type: 3}
-  levelDuration: 20
-  spawnCooldown: 4
+  levelDuration: 30
+  spawnCooldown: 4.5
   hasFog: 0
 --- !u!1 &825299579
 GameObject:
@@ -4275,7 +4275,7 @@ GameObject:
   - component: {fileID: 903731557}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5045,9 +5045,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 7298991456915058498, guid: 599130cf646ad044d9895ed4939008ee, type: 3}
-  levelDuration: 20
-  spawnCooldown: 1.28
+  - {fileID: 2862889184207421520, guid: 2cd717eae644cd14a96708e8f14906ab, type: 3}
+  levelDuration: 45
+  spawnCooldown: 5.5
   hasFog: 0
 --- !u!1 &1142214656
 GameObject:
@@ -7742,7 +7742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 7298991456915058498, guid: 8d5313f166a6fd94d863ae03ac4b6fb1, type: 3}
-  levelDuration: 20
+  levelDuration: 30
   spawnCooldown: 4
   hasFog: 1
 --- !u!1 &1887924613
@@ -8225,7 +8225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 7298991456915058498, guid: 8d5313f166a6fd94d863ae03ac4b6fb1, type: 3}
-  levelDuration: 20
+  levelDuration: 30
   spawnCooldown: 3.86
   hasFog: 0
 --- !u!1 &2094585455
