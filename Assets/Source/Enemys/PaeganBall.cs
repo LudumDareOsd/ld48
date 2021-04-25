@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PaeganBall : MonoBehaviour, IEnemy {
-
-	public int Health { get; set; }
+public class PaeganBall : BaseEnemy, IEnemy
+{
 	public AudioClip hitSound;
 	private float ySpeed = 1f;
 	private float spinSpeed = 0f;
@@ -23,6 +22,7 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		transform.Rotate(Vector3.forward * spinSpeed);
 
 		if (transform.position.y > 6f) {
+			StopMoving();
 			Destroy(gameObject);
 		}
 	}
@@ -31,7 +31,15 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 	{
 		Health = 10;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
-		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
+		handleCoroutine = LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime);
+		StartCoroutine(handleCoroutine);
+	}
+
+	public void Despawn()
+	{
+		if (Health > 0) StopMoving();
+		spinSpeed = Random.Range(-0.05f, 0.05f);
+		ySpeed = 3f;
 	}
 
 	public void TakeDamage(int damage)
@@ -42,6 +50,7 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 		if (Health <= 0)
 		{
 			// Do the death things
+			StopCoroutine(handleCoroutine);
 			Destroy(gameObject);
 		}
 	}
@@ -66,7 +75,9 @@ public class PaeganBall : MonoBehaviour, IEnemy {
 			time += Time.deltaTime;
 			yield return null;
 		}
-		StartCoroutine(LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime));
+		handleCoroutine = LerpXPosition(Random.Range(-6.5f, 6.5f), xTransitionTime);
+		StartCoroutine(handleCoroutine);
+		yield break;
 	}
 
 

@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 8241430256347773865, guid: d653a922e3ee08246a9cc5d98ce35fa1, type: 3}
+  - {fileID: 2862889184207421520, guid: 304213e3c02ee6c4b8e7f07594cd04ca, type: 3}
   levelDuration: 20
   spawnCooldown: 1.28
   hasFog: 0
@@ -3688,7 +3689,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 2862889184207421520, guid: 304213e3c02ee6c4b8e7f07594cd04ca, type: 3}
   levelDuration: 20
-  spawnCooldown: 1.28
+  spawnCooldown: 4
   hasFog: 0
 --- !u!1 &825299579
 GameObject:
@@ -4362,7 +4363,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6}
+  m_Offset: {x: -0.008370131, y: 0.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4373,7 +4374,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.8}
+  m_Size: {x: 0.43536553, y: 1.6991851}
   m_EdgeRadius: 0
 --- !u!1 &1019906168
 GameObject:
@@ -8226,7 +8227,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 7298991456915058498, guid: 8d5313f166a6fd94d863ae03ac4b6fb1, type: 3}
   levelDuration: 20
-  spawnCooldown: 5
+  spawnCooldown: 3.86
   hasFog: 0
 --- !u!1 &2094585455
 GameObject:

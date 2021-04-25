@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingDant : MonoBehaviour, IEnemy
+public class FallingDant : BaseEnemy, IEnemy
 {
-	public int Health { get; set; }
-
 	private float ySpeed = -2f;
 
 	private void Start() {
@@ -24,6 +22,10 @@ public class FallingDant : MonoBehaviour, IEnemy
 	public void Spawn() {
 		Health = 1;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), 5f, 0f);
+	}
+
+	public void Despawn()
+	{
 	}
 
 	public void TakeDamage(int damage) {
