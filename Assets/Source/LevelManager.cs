@@ -19,12 +19,15 @@ using UnityEngine.SceneManagement;
  **/
 public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
+	public GameObject lostSoul;
 	private Level currentLevel = null;
 	private bool lost = false;
 	private float lostTimeOut = 1f;
+	private Transform enemyContainer;
 
 	public void Awake() {
 		StartCoroutine(LevelTransition(0));
+		enemyContainer = transform.Find("EnemyContainer");
 	}
 
 	public void Update() {
@@ -46,6 +49,14 @@ public class LevelManager : Singleton<LevelManager> {
 		lost = true;
 		lostTimeOut = 1f;
 		TextManager.Instance.ShowLostText();
+	}
+
+	private void SpawnSoul() {
+		var spawn = Instantiate(lostSoul, transform);
+		var ienemy = spawn.GetComponent<IEnemy>();
+		ienemy.Spawn();
+		
+		spawn.transform.SetParent(enemyContainer);
 	}
 
 	private IEnumerator LoadLevel(int i) {
@@ -78,6 +89,7 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 1: {
 					TextManager.Instance.ShowText("LUST");
+					SpawnSoul();
 					break;
 				}
 			case 2: {
@@ -93,6 +105,7 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 4: {
 					TextManager.Instance.ShowText("ANGER");
+					SpawnSoul();
 					BackgroundManager.Instance.LoadBackGround(4);
 					BackgroundManager.Instance.UnLoadBackGround(2);
 					break;
@@ -105,6 +118,7 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 6: {
 					TextManager.Instance.ShowText("VIOLENCE");
+					SpawnSoul();
 					BackgroundManager.Instance.LoadBackGround(6);
 					BackgroundManager.Instance.UnLoadBackGround(4);
 					break;
