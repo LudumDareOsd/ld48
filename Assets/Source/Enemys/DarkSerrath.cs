@@ -5,7 +5,7 @@ using UnityEngine;
 public class DarkSerrath : BaseEnemy, IEnemy
 {
 	public AudioClip hitSound;
-	private float transitionTime = 0.75f;
+	private float transitionTime = 1.25f;
 
 	private void Update() {
 		if (transform.position.y > 6f) {

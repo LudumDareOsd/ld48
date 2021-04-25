@@ -95,7 +95,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90e1a9d269a8ef9469f826d752703602, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -191,7 +191,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -209,3 +209,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e46e4d1482f32428fd77a1932c8386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: f0a699de514feff428c22a20c0690308, type: 3}
+  bullet: {fileID: 699198736353310698, guid: 8482880cc0cdfeb46a3828766e5e605c, type: 3}

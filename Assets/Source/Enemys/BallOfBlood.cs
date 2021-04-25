@@ -5,6 +5,10 @@ using UnityEngine;
 public class BallOfBlood : BaseEnemy, IEnemy
 {
 	public AudioClip hitSound;
+	public GameObject bullet;
+
+	private float shootCooldown = 4f;
+	private float transitionTime = 6f;
 
 	private void Start()
 	{
@@ -12,16 +16,30 @@ public class BallOfBlood : BaseEnemy, IEnemy
 
 	private void Update()
 	{
+		shootCooldown -= Time.deltaTime;
+
+		if (shootCooldown < 0f)
+		{
+			shootCooldown = Random.Range(4f, 6f);
+			var missile = Instantiate(bullet);
+			missile.transform.position = transform.position;
+			missile.transform.rotation = Random.rotation;
+		}
 
 	}
 
 	public void Spawn()
 	{
-		Health = 25;
+		Health = 20;
+		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5.5f, 0f);
+		StartRandomMovement(transitionTime, 3f);
 	}
 
 	public void Despawn()
 	{
+		shootCooldown = float.PositiveInfinity;
+		MoveTo(new Vector3(transform.position.x, -5.5f, 0), 3f);
+		Destroy(gameObject, 5f);
 	}
 
 	public void TakeDamage(int damage)
