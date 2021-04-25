@@ -27,6 +27,10 @@ public class TextManager : Singleton<TextManager>
 		StartCoroutine(FadeInMain());
 	}
 
+	public void DisableScore() {
+		scoreTxt.gameObject.SetActive(false);
+	}
+
 	private IEnumerator PulseMain() {
 		for (var i = 0f; i <= 1; i += Time.deltaTime) {
 			main.color = new Color(main.color.r, main.color.g, main.color.b, i);

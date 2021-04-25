@@ -21,17 +21,17 @@ public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
 	public List<AudioClip> music;
 	public GameObject lostSoul;
+	public SpriteRenderer fadeToBlack;
+	public AudioSource audioSource;
 	private Level currentLevel = null;
 	private bool lost = false;
 	private float lostTimeOut = 1f;
 	private Transform enemyContainer;
-	private AudioSource audioSource;
 	private bool tickLevel = false;
 
 	public void Awake() {
-		StartCoroutine(LevelTransition(0));
 		enemyContainer = transform.Find("EnemyContainer");
-		audioSource = GetComponent<AudioSource>();
+		StartCoroutine(LevelTransition(7));
 	}
 
 	public void Update() {
@@ -54,11 +54,23 @@ public class LevelManager : Singleton<LevelManager> {
 		TextManager.Instance.ShowLostText();
 	}
 
+	private IEnumerator FadeToBlack() {
+		for (var i = 0f; i <= 1; i += Time.deltaTime/4) {
+			fadeToBlack.color = new Color(fadeToBlack.color.r, fadeToBlack.color.g, fadeToBlack.color.b, i);
+
+			yield return null;
+		}
+
+		yield return new WaitForSeconds(2);
+
+		SceneManager.LoadScene("final");
+	}
+
 	private void SpawnSoul() {
 		var spawn = Instantiate(lostSoul, transform);
 		var ienemy = spawn.GetComponent<IEnemy>();
 		ienemy.Spawn();
-		
+
 		spawn.transform.SetParent(enemyContainer);
 	}
 
@@ -137,10 +149,18 @@ public class LevelManager : Singleton<LevelManager> {
 					TextManager.Instance.ShowText("FRAUD");
 					audioSource.clip = music[4];
 					audioSource.Play();
-					BackgroundManager.Instance.UnLoadBackGround(5);
-					BackgroundManager.Instance.UnLoadBackGround(6);
+
+					TextManager.Instance.DisableScore();
+					StartCoroutine(FadeToBlack());
+
 					break;
 				}
+			case 8: {
+					
+
+					break;
+				}
+
 			case 9: {
 					// transition to hell
 					Debug.Log("YOU WIN!");
