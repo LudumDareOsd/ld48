@@ -4214,7 +4214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordSwings:
-  - {fileID: 8300000, guid: 6f8e96d9cd1f74e42b683d5b10572678, type: 3}
   - {fileID: 8300000, guid: f93111e83eec86e4084f7129f47ba122, type: 3}
   - {fileID: 8300000, guid: 2dd31ec2c17cc3e489ddd72a393974ba, type: 3}
   death: {fileID: 0}
