@@ -24,7 +24,6 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
 	public void ToggleFog(bool state)
 	{
-		Debug.Log("Toggle fog " + state);
 		if (state)
 		{
 			fog.GetComponent<Parallax>().StartFog();

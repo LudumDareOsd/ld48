@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class IceDrop : MonoBehaviour, IEnemy
+public class IceDrop : BaseEnemy, IEnemy
 {
-	public int Health { get; set; }
-
 	private float ySpeed = -1f;
 
 	private void Start()
@@ -27,6 +25,10 @@ public class IceDrop : MonoBehaviour, IEnemy
 	{
 		Health = 1;
 		transform.position = new Vector3(Random.Range(-6.5f, 6.5f), 5f, 0f);
+	}
+
+	public void Despawn()
+	{
 	}
 
 	public void TakeDamage(int damage)

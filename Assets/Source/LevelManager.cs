@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 /**
  * alla levels har souls powerup
  * 
@@ -18,7 +17,6 @@ using UnityEngine.SceneManagement;
  * level 9, finish game / dyk ner i avgrunden
  * 
  **/
-
 public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
 	public List<AudioClip> music;
@@ -28,6 +26,7 @@ public class LevelManager : Singleton<LevelManager> {
 	private float lostTimeOut = 1f;
 	private Transform enemyContainer;
 	private AudioSource audioSource;
+	private bool tickLevel = false;
 
 	public void Awake() {
 		StartCoroutine(LevelTransition(0));
@@ -45,8 +44,7 @@ public class LevelManager : Singleton<LevelManager> {
 			return;
 		}
 
-		if (!currentLevel) return;
-		currentLevel.Tick();
+		if (tickLevel) currentLevel.Tick();
 		TextManager.Instance.AddScore(1);
 	}
 
@@ -69,7 +67,12 @@ public class LevelManager : Singleton<LevelManager> {
 
 		currentLevel = levels[i];
 
+		// only tick level inside duration
+		tickLevel = true;
 		yield return new WaitForSeconds(currentLevel.levelDuration);
+		tickLevel = false;
+
+		currentLevel.Despawn();
 
 		if (++i >= levels.Count) {
 			Debug.LogError("Switched to a level not set in LevelManager");
