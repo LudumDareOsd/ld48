@@ -19,8 +19,7 @@ using UnityEngine.SceneManagement;
  * 
  **/
 
-public class LevelManager : Singleton<LevelManager>
-{
+public class LevelManager : Singleton<LevelManager> {
 	public List<Level> levels;
 	private Level currentLevel = null;
 	private bool lost = false;
@@ -50,7 +49,7 @@ public class LevelManager : Singleton<LevelManager>
 		lostTimeOut = 1f;
 		TextManager.Instance.ShowLostText();
 	}
-	
+
 	private IEnumerator LoadLevel(int i) {
 		Debug.Log("Switching to level " + i);
 
@@ -58,8 +57,7 @@ public class LevelManager : Singleton<LevelManager>
 
 		yield return new WaitForSeconds(currentLevel.levelDuration);
 
-		if (++i >= levels.Count)
-		{
+		if (++i >= levels.Count) {
 			Debug.LogError("Switched to a level not set in LevelManager");
 			yield break;
 		}
@@ -67,31 +65,61 @@ public class LevelManager : Singleton<LevelManager>
 		StartCoroutine(LevelTransition(i));
 	}
 
-	private IEnumerator LevelTransition(int i)
-	{
+	private IEnumerator LevelTransition(int i) {
 		Debug.Log("Transition to level " + i);
 
 		BackgroundManager.Instance.ToggleFog(levels[i].hasFog);
 
-		switch (i)
-		{
+		switch (i) {
 			case 0: {
-				// transition to first level etc
-				break;
-			}
+					TextManager.Instance.ShowText("LIMBO");
+					BackgroundManager.Instance.LoadBackGround(1);
+					break;
+				}
 			case 1: {
-				//
-				break;
-			}
+					TextManager.Instance.ShowText("LUST");
+					break;
+				}
 			case 2: {
-				//
-				break;
-			}
+					TextManager.Instance.ShowText("GLUTTONY");
+					BackgroundManager.Instance.LoadBackGround(2);
+					break;
+				}
+			case 3: {
+					TextManager.Instance.ShowText("GREED");
+					BackgroundManager.Instance.LoadBackGround(3);
+					BackgroundManager.Instance.UnLoadBackGround(1);
+					break;
+				}
+			case 4: {
+					TextManager.Instance.ShowText("ANGER");
+					BackgroundManager.Instance.LoadBackGround(4);
+					BackgroundManager.Instance.UnLoadBackGround(2);
+					break;
+				}
+			case 5: {
+					TextManager.Instance.ShowText("HERESY");
+					BackgroundManager.Instance.LoadBackGround(5);
+					BackgroundManager.Instance.UnLoadBackGround(3);
+					break;
+				}
+			case 6: {
+					TextManager.Instance.ShowText("VIOLENCE");
+					BackgroundManager.Instance.LoadBackGround(6);
+					BackgroundManager.Instance.UnLoadBackGround(4);
+					break;
+				}
+			case 7: {
+					TextManager.Instance.ShowText("FRAUD");
+					BackgroundManager.Instance.UnLoadBackGround(5);
+					BackgroundManager.Instance.UnLoadBackGround(6);
+					break;
+				}
 			case 9: {
-				// transition to hell
-				Debug.Log("YOU WIN!");
-				break;
-			}
+					// transition to hell
+					Debug.Log("YOU WIN!");
+					break;
+				}
 			default:
 				Debug.Log("Unhandled LevelTransition: " + i);
 				i = 0;

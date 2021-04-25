@@ -10,7 +10,6 @@ public class TextManager : Singleton<TextManager>
 
 	public void Awake() {
 		scoreTxt.text = "100";
-		StartCoroutine(FadeInMain());
 	}
 
 	public void AddScore(int points) {
@@ -21,6 +20,11 @@ public class TextManager : Singleton<TextManager>
 	public void ShowLostText() {
 		main.text = "PRESS ANY KEY TO RESTART";
 		StartCoroutine(PulseMain());
+	}
+
+	public void ShowText(string text) {
+		main.text = text;
+		StartCoroutine(FadeInMain());
 	}
 
 	private IEnumerator PulseMain() {

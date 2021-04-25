@@ -17,7 +17,7 @@ public class IceDrop : MonoBehaviour, IEnemy
 		var step = ySpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 6.5f, 0), step);
 
-		if (transform.position.y > 6f)
+		if (transform.position.y < -16f)
 		{
 			Destroy(gameObject);
 		}
@@ -37,11 +37,6 @@ public class IceDrop : MonoBehaviour, IEnemy
 			// Do the death things
 			Destroy(gameObject);
 		}
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		//other.GetComponent<Player>().TakeDamage();
 	}
 
 }
