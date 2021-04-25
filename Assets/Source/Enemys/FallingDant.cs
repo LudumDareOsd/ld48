@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FallingDant : BaseEnemy, IEnemy
 {
-	public int Health { get; set; }
-
 	private float ySpeed = -2f;
 
 	private void Start() {

@@ -39,10 +39,11 @@ public class Level : MonoBehaviour
 
 	public void Despawn()
 	{
+		Debug.Log("Despawning " + activeEnemies.Count);
 		foreach (var enemy in activeEnemies)
 		{
 			enemy.GetComponent<IEnemy>().Despawn();
-			activeEnemies.Remove(enemy);
+			//activeEnemies.Remove(enemy);
 		}
 	}
 }

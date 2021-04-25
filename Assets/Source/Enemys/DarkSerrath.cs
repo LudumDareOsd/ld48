@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DarkSerrath : BaseEnemy, IEnemy
 {
-	public int Health { get; set; }
 	public float transitionTime = 4.5f;
 	public AudioClip hitSound;
 

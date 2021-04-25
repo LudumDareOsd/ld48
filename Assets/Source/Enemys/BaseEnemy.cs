@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
-	private IEnumerator moveCoroutine;
-	private IEnumerator handleCoroutine;
+	public int Health { get; set; }
+
+	protected IEnumerator moveCoroutine;
+	protected IEnumerator handleCoroutine;
 
 	protected Vector3 velocity = Vector3.zero;
 
 	public void MoveTo(Vector3 point, float duration)
 	{
-		StopCoroutine(handleCoroutine);
+		StopMoving();
 		moveCoroutine = LerpPosition(point, duration);
 		StartCoroutine(moveCoroutine);
+	}
+
+	public void StopMoving()
+	{
+		if (handleCoroutine != null) StopCoroutine(handleCoroutine);
+		if (moveCoroutine != null) StopCoroutine(moveCoroutine);
 	}
 
 	public void StartRandomMovement(float duration, float waitTime)

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class IceDrop : BaseEnemy, IEnemy
 {
-	public int Health { get; set; }
-
 	private float ySpeed = -1f;
 
 	private void Start()

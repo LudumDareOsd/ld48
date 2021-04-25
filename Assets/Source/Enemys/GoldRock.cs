@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class GoldRock : MonoBehaviour {
-	public int Health { get; set; }
-	
+public class GoldRock : BaseEnemy, IEnemy
+{
 	private Rigidbody2D rb;
 
-	private void Start() {
-		rb = GetComponent<Rigidbody2D>();
+	private void Start()
+	{
+	}
 
+	private void Awake()
+	{
+		rb = GetComponent<Rigidbody2D>();
 		Destroy(gameObject, 10f);
 	}
 
@@ -26,10 +29,10 @@ public class GoldRock : MonoBehaviour {
 			case 1:
 				transform.position = new Vector3(Random.Range(-6.5f, 6.5f), -5f, 0f);
 				break;
-			case 3:
+			case 2:
 				transform.position = new Vector3(8f, Random.Range(-6.5f, 6.5f), 0f);
 				break;
-			case 4:
+			case 3:
 				transform.position = new Vector3(-8f, Random.Range(-6.5f, 6.5f), 0f);
 				break;
 		}
@@ -39,9 +42,13 @@ public class GoldRock : MonoBehaviour {
 
 		var target = new Vector3(x, y, 0);
 
-		var direction = transform.position - target;
+		var direction = target - transform.position;
 
 		rb.velocity = (direction.normalized * Random.Range(3f, 5f));
+	}
+
+	public void Despawn()
+	{
 	}
 
 	public void TakeDamage(int damage) {
