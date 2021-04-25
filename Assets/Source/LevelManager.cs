@@ -135,7 +135,7 @@ public class LevelManager : Singleton<LevelManager> {
 				}
 			case 7: {
 					TextManager.Instance.ShowText("FRAUD");
-					audioSource.clip = music[0];
+					audioSource.clip = music[4];
 					audioSource.Play();
 					BackgroundManager.Instance.UnLoadBackGround(5);
 					BackgroundManager.Instance.UnLoadBackGround(6);

@@ -1192,6 +1192,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0277d26eaf6273d41a5ad699ccc28850, type: 3}
   - {fileID: 8300000, guid: f9be8002b12ad7e40b32ec14e55aabac, type: 3}
   - {fileID: 8300000, guid: b003eb1e2c6b7b14db12d6aefb0f214f, type: 3}
+  - {fileID: 8300000, guid: 694afde1b2643334b8599f754f2b66f7, type: 3}
   lostSoul: {fileID: 7298991456915058498, guid: 5e597a5a31f36cf458461a86760e31dc, type: 3}
 --- !u!4 &363520230
 Transform:
