@@ -174,7 +174,7 @@ public class Player : MonoBehaviour {
 			srSword.sprite = swordMiddleLeft;
 
 			collider.offset = new Vector2(-0.7f, -1.0f);
-			collider.size = new Vector2(1.0f, 0.8f);
+			collider.size = new Vector2(1.2f, 1f);
 		} else if (health > 2) {
 			srSword.sprite = swordLongLeft;
 
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour {
 			srSword.sprite = swordMiddleRight;
 
 			collider.offset = new Vector2(0.7f, -1.0f);
-			collider.size = new Vector2(1.0f, 0.8f);
+			collider.size = new Vector2(1.2f, 1f);
 		} else if (health > 2) {
 			srSword.sprite = swordLongRight;
 
