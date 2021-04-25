@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	private float moveSpeedY = 6f;
 	private float accelerationSpeed = 3f;
 	private Rigidbody2D rb;
-	private int health = 2;
+	private int health = 1;
 	private float attackTime = 0f;
 	private float attackTimeCd = 0f;
 	private bool attackPrio = true;
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour {
 			srSword.sprite = swordShortLeft;
 
 			collider.offset = new Vector2(-0.6f, -0.8f);
-			collider.size = new Vector2(0.7f, 0.2f);
+			collider.size = new Vector2(1f, 0.5f);
 		} else if (health == 2) {
 			srSword.sprite = swordMiddleLeft;
 
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour {
 			srSword.sprite = swordShortRight;
 
 			collider.offset = new Vector2(0.6f, -0.8f);
-			collider.size = new Vector2(0.7f, 0.2f);
+			collider.size = new Vector2(1, 0.5f);
 		} else if (health == 2) {
 			srSword.sprite = swordMiddleRight;
 
