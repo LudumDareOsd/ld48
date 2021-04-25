@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 
 	public List<AudioClip> swordSwings;
 	public AudioClip death;
+	public AudioClip damage;
 
 	public SpriteRenderer srPlayer;
 	public Sprite left;
@@ -99,7 +100,9 @@ public class Player : MonoBehaviour {
 			{
 				health--;
 
-				invulnerableTimer = 2f;
+				AudioManager.Instance.PlaySingle(damage, 0.2f);
+				
+				invulnerableTimer = 1f;
 				srPlayer.enabled = false;
 				srSword.enabled = false;
 

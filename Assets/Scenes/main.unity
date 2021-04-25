@@ -4217,6 +4217,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f93111e83eec86e4084f7129f47ba122, type: 3}
   - {fileID: 8300000, guid: 2dd31ec2c17cc3e489ddd72a393974ba, type: 3}
   death: {fileID: 0}
+  damage: {fileID: 8300000, guid: 7d8c6c657e1117e4f983886e0c3dbb9a, type: 3}
   srPlayer: {fileID: 1536010023}
   left: {fileID: 21300000, guid: c0b553be039b74540aa28b4a85f498dc, type: 3}
   leftAttack: {fileID: 21300000, guid: 4bcfcd0a2b155ee49b9212225c31f399, type: 3}
