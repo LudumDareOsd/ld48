@@ -156,15 +156,14 @@ public class LevelManager : Singleton<LevelManager> {
 			case 6: {
 					TextManager.Instance.ShowText("VIOLENCE");
 					SpawnSoul();
+					audioSource.clip = music[4];
+					audioSource.Play();
 					BackgroundManager.Instance.LoadBackGround(6);
 					BackgroundManager.Instance.UnLoadBackGround(4);
 					break;
 				}
 			case 7: {
 					TextManager.Instance.ShowText("FRAUD");
-					audioSource.clip = music[4];
-					audioSource.Play();
-
 					TextManager.Instance.DisableScore();
 					StartCoroutine(FadeToBlack());
 
