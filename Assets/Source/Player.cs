@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	public void Update() {
 		var xAxis = Input.GetAxis("Horizontal");
 
-		if (Input.GetButtonDown("Fire1") && attackTimeCd <= 0) {
+		if ((Input.GetButtonDown("Fire1") || Input.GetKeyDown("space")) && attackTimeCd <= 0) {
 			attackTime = 0.2f;
 			attackTimeCd = 0.5f;
 
