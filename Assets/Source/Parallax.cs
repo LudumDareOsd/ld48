@@ -26,7 +26,8 @@ public class Parallax : MonoBehaviour
 
 	void Start()
     {
-		startPos = transform.position;
+		pos = transform.position;
+		startPos = new Vector3(transform.position.x, 0, 0);
 		height = spriteRenderers[0].bounds.size.y;
 		width = spriteRenderers[0].bounds.size.y;
 		targetXPosition = width;
