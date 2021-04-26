@@ -82,7 +82,7 @@ public class LevelManager : Singleton<LevelManager> {
 			yield return null;
 		}
 
-		Debug.Log("Switching to level " + i);
+		//Debug.Log("Switching to level " + i);
 
 		currentLevel = levels[i];
 
@@ -107,7 +107,7 @@ public class LevelManager : Singleton<LevelManager> {
 			yield return null;
 		}
 
-		Debug.Log("Transition to level " + i);
+		//Debug.Log("Transition to level " + i);
 
 		BackgroundManager.Instance.ToggleFog(levels[i].hasFog);
 

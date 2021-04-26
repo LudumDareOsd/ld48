@@ -18,7 +18,7 @@ public class BloodBullet : MonoBehaviour
 		
 		// mostly so they dont clump up some randomness
 		speed = Random.Range(3f, 4.5f);
-		rotateSpeed = Random.Range(110f, 180f); 
+		rotateSpeed = Random.Range(130f, 180f); 
 	}
 
 	void FixedUpdate()

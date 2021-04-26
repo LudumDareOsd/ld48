@@ -41,6 +41,7 @@ public class GoldRock : BaseEnemy, IEnemy
 		var direction = target - transform.position;
 
 		rb.velocity = (direction.normalized * Random.Range(3f, 5f));
+		transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Random.Range(0f, 360f)));
 	}
 
 	public void Despawn()
