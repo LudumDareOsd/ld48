@@ -7,7 +7,7 @@ public class FallingDant : BaseEnemy, IEnemy
 	private float ySpeed = -2f;
 
 	private void Start() {
-		ySpeed = Random.Range(-2.8f, -3.2f);
+		ySpeed = Random.Range(-2.8f, -3.8f);
 	}
 
 	private void Update() {

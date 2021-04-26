@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -5990065896806662757}
   - component: {fileID: 4287543725856158772}
   - component: {fileID: 8945294327667660882}
+  - component: {fileID: 1664541785498906203}
   m_Layer: 0
   m_Name: FallingDante
   m_TagString: Untagged
@@ -219,3 +220,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5afd4574d7d62e45aa412b3e66d8f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1664541785498906203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699198736353310698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53879d158577117418e497e6ec190c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 01ee4de313e5ef242ab1fab752bc5ad6, type: 3}
+  - {fileID: 21300000, guid: 2fc7976a25619bd4288eb9f2cd5aa5f4, type: 3}
+  switchTime: 0.25
