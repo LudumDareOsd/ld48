@@ -32,6 +32,7 @@ public class LostSoul : BaseEnemy, IEnemy
 	public void TakeDamage(int damage)
 	{
 		AudioManager.Instance.PlaySingle(hitSound, 0.3f);
+		Blink();
 
 		Health -= damage;
 		if (Health <= 0)

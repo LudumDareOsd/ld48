@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class End : MonoBehaviour
 {
+	public TextMeshProUGUI main;
 	public GameObject morningstar;
 	public GameObject touchDown;
 	public SpriteRenderer holeBg;
@@ -17,6 +19,7 @@ public class End : MonoBehaviour
 
 
 	public void Start() {
+		main.color = new Color(main.color.r, main.color.g, main.color.b, 0);
 		holeBg.material.color = new Color(holeBg.material.color.r, holeBg.material.color.g, holeBg.material.color.b, 0);
 		holeFe.material.color = new Color(holeFe.material.color.r, holeFe.material.color.g, holeFe.material.color.b, 0);
 		endScene.material.color = new Color(endScene.material.color.r, endScene.material.color.g, endScene.material.color.b, 0);
@@ -55,6 +58,7 @@ public class End : MonoBehaviour
 		for (var i = 0f; i <= 1; i += (Time.deltaTime / 3)) {
 
 			endScene.material.color = new Color(endScene.material.color.r, endScene.material.color.g, endScene.material.color.b, i);
+			main.color = new Color(main.color.r, main.color.g, main.color.b, i);
 
 			yield return null;
 		}

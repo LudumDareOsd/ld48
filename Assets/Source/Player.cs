@@ -38,6 +38,8 @@ public class Player : MonoBehaviour {
 	public Sprite swordMiddleRight;
 	public Sprite swordLongRight;
 
+	public Sprite backSprite;
+
 	public GameObject attack;
 
 	public void Awake() {
@@ -64,8 +66,9 @@ public class Player : MonoBehaviour {
 		CheckInvulnerable();
 
 		var xAxis = Input.GetAxis("Horizontal");
+		var yAxis = Input.GetAxis("Vertical");
 
-		rb.velocity += new Vector2(accelerationSpeed * xAxis, accelerationSpeed * Input.GetAxis("Vertical"));
+		rb.velocity += new Vector2(accelerationSpeed * xAxis, accelerationSpeed * yAxis);
 
 		if (rb.velocity.x > moveSpeed) {
 			rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour {
 			attackTime -= Time.deltaTime;
 		} else {
 			attack.SetActive(false);
-			SetPlayerSprite(xAxis);
+			SetPlayerSprite(xAxis, yAxis);
 			SetSwordSprite(health);
 		}
 
@@ -219,12 +222,14 @@ public class Player : MonoBehaviour {
 
 	}
 
-	private void SetPlayerSprite(float xAxis) {
+	private void SetPlayerSprite(float xAxis, float yAxis) {
 
 		if (xAxis > 0.2) {
 			srPlayer.sprite = right;
 		} else if (xAxis < -0.2) {
 			srPlayer.sprite = left;
+		} else if (yAxis > 0.2) {
+			srPlayer.sprite = backSprite;
 		} else {
 			srPlayer.sprite = straight;
 		}

@@ -4,7 +4,7 @@ public class GoldRock : BaseEnemy, IEnemy
 {
 	private Rigidbody2D rb;
 
-	private void Awake()
+	private new void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		Destroy(gameObject, 10f);

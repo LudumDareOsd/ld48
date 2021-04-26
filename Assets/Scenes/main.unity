@@ -4234,6 +4234,7 @@ MonoBehaviour:
   swordShortRight: {fileID: 21300000, guid: eafd3b926fd55674b8307847015fd2d6, type: 3}
   swordMiddleRight: {fileID: 21300000, guid: 0770383573153db47b2927287ab1d387, type: 3}
   swordLongRight: {fileID: 21300000, guid: f889996164d8dcd4382ad80fc62e4bd9, type: 3}
+  backSprite: {fileID: 21300000, guid: e1d543538daceb24c93961488e354532, type: 3}
   attack: {fileID: 639622673}
 --- !u!50 &903731556
 Rigidbody2D:

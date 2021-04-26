@@ -10,6 +10,11 @@ public class BaseEnemy : MonoBehaviour
 	protected IEnumerator handleCoroutine;
 
 	protected Vector3 velocity = Vector3.zero;
+	private SpriteRenderer sr;
+
+	public void Awake() {
+		sr = GetComponent<SpriteRenderer>();
+	}
 
 	public void MoveTo(Vector3 point, float duration)
 	{
@@ -28,6 +33,27 @@ public class BaseEnemy : MonoBehaviour
 	{
 		if (handleCoroutine != null) StopCoroutine(handleCoroutine);
 		if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+	}
+
+	public void Blink() {
+		StartCoroutine(BlinkTwice());
+	}
+
+	private IEnumerator BlinkTwice() {
+
+		sr.enabled = false;
+
+		yield return new WaitForSeconds(0.1f);
+
+		sr.enabled = true;
+
+		yield return new WaitForSeconds(0.1f);
+
+		sr.enabled = false;
+
+		yield return new WaitForSeconds(0.1f);
+
+		sr.enabled = true;
 	}
 
 	private IEnumerator LerpPosition(Vector3 targetPosition, float duration)
